@@ -9,7 +9,7 @@ const taskInput = document.querySelector('#task');
 loadEventListener();
 
 function loadEventListener() {
-    //Add task event
+    // Add task event
     form.addEventListener('submit', addTask);
 }
 
@@ -19,6 +19,27 @@ function addTask(e){
         alert('Add task');
     }
 
-    //Create li element
+    // Create li element
+    const li = document.createElement('li');
+    // Add Class
+    li.className = 'collection-item';
+
+    //Create text node and append to the li
+    li.appendChild(document.createTextNode(taskInput.value));
+    // Create new link element
+    const link = document.createElement('a');
+    // Add Class
+    link.className = 'delete-item scondary-content';
+    // Add icon html
+    link.innerHTML = '<i class="fa fa-remove"></i>';
+
+    // Append the link to li
+    li.appendChild(link);
+    // Append li to the ul
+    taskList.appendChild(li);
+
+    // Clear Input
+    taskInput.value = '';
+
     e.preventDefault();
 }
